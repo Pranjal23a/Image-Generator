@@ -38,6 +38,7 @@ header {
     width: 100%;
     max-width: 600px;
     position: relative;
+    z-index: 1;
 }
 
 #submit-icon {
@@ -46,6 +47,7 @@ header {
     right: 30px;
     width: 10px;
     height: 10px;
+
 }
 
 #submit-icon img {
@@ -82,4 +84,32 @@ input {
 
 .image-container img {
     width: 100%;
+}
+
+.spinner {
+    position: absolute;
+    top: 6px;
+    right: -35px;
+    width: 10px;
+    height: 10px;
+    display: none;
+    transform: translateY(-50%);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #fff;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    z-index: 2;
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

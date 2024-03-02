@@ -2,9 +2,10 @@ const API_KEY = "";
 const submitIcon = document.querySelector("#submit-icon");
 const inputElement = document.querySelector("input");
 const imageSection = document.querySelector(".images-section");
-
+const spinner = document.querySelector(".spinner");
 const getImages = async (e) => {
     e.preventDefault();
+    spinner.style.display = "block";
     const options = {
         method: "POST",
         headers: {
@@ -21,6 +22,7 @@ const getImages = async (e) => {
         const response = await fetch("https://api.openai.com/v1/images/generations", options);
         const data = await response.json();
         console.log(data);
+        imageSection.innerHTML = '';
         data?.data.forEach(imageObject => {
             const imageContainer = document.createElement("div");
             imageContainer.classList.add("image-container");
@@ -32,6 +34,10 @@ const getImages = async (e) => {
     }
     catch (error) {
         console.error("Error:", error);
+    }
+    finally {
+        // Hide the spinner after data is loaded
+        spinner.style.display = "none";
     }
 }
 
